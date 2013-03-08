@@ -1,0 +1,1276 @@
+Help on module engines.HermesModels in engines:
+
+NAME
+    engines.HermesModels
+
+FILE
+    d:\dev\hermes-\engines\hermesmodels.py
+
+CLASSES
+    sqlobject.main.SQLObject(__builtin__.object)
+        DataStore
+        DataStoreImported
+        HermesLegend
+        HermesMap
+        HermesSystems
+        StoreAttributes
+    
+    class DataStore(sqlobject.main.SQLObject)
+     |  DataStore
+     |  
+     |  +--------------+
+     |  |   Map        |
+     |  |--------------|
+     |  |              |
+     |  |              |                                        +----------------------+
+     |  |              |                                        |     StoreAttributes  |
+     |  +--------------+                                        |----------------------|
+     |          ^ +          +------------------+               |                      |
+     |          | |          |    DataStore     |        +----->|                      |
+     |          | |          |------------------|        | +---+|                      |
+     |          | +--------> |                  |        | |    +----------------------+
+     |          +----------+ |                  | +------+ |
+     |                       |                  | <--------+
+     |                       +------------------+
+     |                                   ^ +                    +----------------------+
+     |                                   | |                    |   DataStoreImported  |
+     |                                   | |                    |----------------------|
+     |                                   | +----------------->  |                      |
+     |                                   +-------------------+  |                      |
+     |                                                          +----------------------+
+     |  
+     |  Method resolution order:
+     |      DataStore
+     |      sqlobject.main.SQLObject
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  addDataStore lambda self, obj
+     |  
+     |  removeDataStore lambda self, obj
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods defined here:
+     |  
+     |  addCurriculumChild(self, child, parentDatastoreId) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  addFields(self, sectionDatastoreId, fields) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  addFileData(self, mapId, data, fileID=0, dataType='course') from sqlobject.declarative.DeclarativeMeta
+     |      Accept the file as a json object through the api, loop over each row and add the row as a datastore item according to mapId
+     |      
+     |      Parse each row as a Item and process according to the HermesMap
+     |  
+     |  addItem(self, datastoreDict, attributes) from sqlobject.declarative.DeclarativeMeta
+     |      Add new if not exist or update
+     |  
+     |  addProposal(self, proposal, apObjName) from sqlobject.declarative.DeclarativeMeta
+     |      used by 
+     |      
+     |      #proposal is the proposal sqlobject in the get
+     |      #apObjName is the name of the approval process name
+     |  
+     |  addSections(self, datastoreId, sections) from sqlobject.declarative.DeclarativeMeta
+     |      Add Sections for a proposal as child of proposal datastore item
+     |      
+     |      # used by 
+     |  
+     |  checkProposals(self, proposalIds) from sqlobject.declarative.DeclarativeMeta
+     |      Check if the proposals already exist in datastore
+     |  
+     |  deleteItem(self, dataStoreId) from sqlobject.declarative.DeclarativeMeta
+     |      Delete Attributes, Data from the datastore imported too
+     |  
+     |  fileDump(self, type, date) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  getDatastoreFields(self, searchParameters, FieldIds={}) from sqlobject.declarative.DeclarativeMeta
+     |      This function should be used to get fields from the datastore, like the prefixes for 
+     |  
+     |  getItem(self, id=None) from sqlobject.declarative.DeclarativeMeta
+     |      Get the Datastore Item, including the attributes
+     |      
+     |      **Result**
+     |      A dict containing the datastore item, plus all the attributes
+     |  
+     |  searchDatastore(self, searchParameters, FieldIds={}, options='pcn', showMatch=False, client=None) from sqlobject.declarative.DeclarativeMeta
+     |      Get the  custom field field ids from the getCustomFieldIds() function 
+     |      
+     |      **Parameters**
+     |      @searchParameters
+     |                  Example:
+     |                  searchParameters = {
+     |                              'map_id' : 7
+     |                              '_id' : 11
+     |                              }
+     |                  #searchParameters['prefix'] = 'SSS'
+     |                  #searchParameters['code'] = '100'
+     |                  #searchParameters['name'] = 'Sport Agenda'
+     |                  
+     |                  #searchParameters['include_imported'] = True
+     |                  
+     |                  ***When searching by date with a Start and End***
+     |                  #searchParameters["modified"] = [{"compare" : ">=", "value" : "2012/08/26" },{"compare" : "<=","value" : "2012/09/20"}]
+     |                  ***When searching by date with only a End Date***
+     |                  #searchParameters["modified"] = {"compare":"<=","value":"2012/09/19"}
+     |                  ***When searching by date with only a Start Date***
+     |                  #searchParameters["modified"] = {"compare":">=","value":"2012/08/27"}
+     |                  
+     |      @FieldIds
+     |                  Example:
+     |                      FieldIds={ 'Prefix' : '627', 'Code' : '629', 'Name' : '631' }
+     |                      
+     |      @options        Specifies the ordering of results
+     |                  Example:
+     |                      "pcn" : Prefix, Code, Name (Ascending)
+     |                      "pcn-d" : Prefix, Code, Name (Descending)
+     |                      "mpcn" : Modified Date, Prefix, Code, Name (Ascending)
+     |                      "mpcn-d" : Modified Date, Prefix, Code, Name (Descending)
+     |                      "a" : Action, Prefix, Code, Name (Ascending)
+     |                      "a-d" : Action, Prefix, Code, Name (Descending)
+     |                      
+     |      @showMatch    default: False
+     |                  if set to true, will find a match in current  software to see if already exists
+     |      
+     |      **Returns:**
+     |          a sorted list of the search results
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  SQLimported
+     |  
+     |  children
+     |  
+     |  client
+     |  
+     |  createdAt
+     |  
+     |  createdBy
+     |  
+     |  dataType
+     |  
+     |  deletedAt
+     |  
+     |  fileID
+     |  
+     |  map
+     |  
+     |  mapID
+     |  
+     |  modifiedAt
+     |  
+     |  parents
+     |  
+     |  rawData
+     |  
+     |  store_attributes
+     |  
+     |  system
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  j = hermes_datastore
+     |  
+     |  
+     |  q = hermes_datastore
+     |  
+     |  
+     |  sqlmeta = <class 'sqlobject.declarative.sqlmeta'>
+     |  
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __eq__(self, other)
+     |  
+     |  __ge__(self, other)
+     |  
+     |  __getstate__(self)
+     |  
+     |  __gt__(self, other)
+     |  
+     |  __init__(self, **kw)
+     |  
+     |  __le__(self, other)
+     |  
+     |  __lt__(self, other)
+     |  
+     |  __ne__(self, other)
+     |  
+     |  __repr__(self)
+     |  
+     |  __setstate__(self, d)
+     |  
+     |  __sqlrepr__(self, db)
+     |  
+     |  destroySelf(self)
+     |  
+     |  expire(self)
+     |  
+     |  set(self, _suppress_set_sig=False, **kw)
+     |  
+     |  sync(self)
+     |  
+     |  syncUpdate(self)
+     |  
+     |  tablesUsedImmediate(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  clearTable(cls, connection=None, clearJoinTables=True) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  coerceID(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexes(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTables(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTablesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTable(cls, ifNotExists=False, createJoinTables=True, createIndexes=True, applyConstraints=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTableSQL(cls, createJoinTables=True, createIndexes=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  delete(cls, id, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteMany(cls, where=<class sqlobject.sqlbuilder.NoDefault>, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropJoinTables(cls, ifExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropTable(cls, ifExists=False, dropJoinTables=True, cascade=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  get(cls, id, connection=None, selectResults=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  select(cls, clause=None, clauseTables=None, orderBy=<class sqlobject.sqlbuilder.NoDefault>, limit=None, lazyColumns=False, reversed=False, distinct=False, connection=None, join=None, forUpdate=False) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  selectBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  setConnection(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  sqlrepr(cls, value, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  tableExists(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __classinit__(cls, new_attrs)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from sqlobject.main.SQLObject:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from sqlobject.main.SQLObject:
+     |  
+     |  SelectResultsClass = <class 'sqlobject.sresults.SelectResults'>
+     |  
+     |  
+     |  __metaclass__ = <class 'sqlobject.declarative.DeclarativeMeta'>
+     |  
+     |  
+     |  childName = None
+    
+    class DataStoreImported(sqlobject.main.SQLObject)
+     |  DataStoreImported
+     |  
+     |  Contains a lookup table if the datastore item has been imported
+     |  
+     |  Method resolution order:
+     |      DataStoreImported
+     |      sqlobject.main.SQLObject
+     |      __builtin__.object
+     |  
+     |  Class methods defined here:
+     |  
+     |  isImported(self, datastoreId, Id, System=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  markImported(self, datastoreId, Id, System=None) from sqlobject.declarative.DeclarativeMeta
+     |      markImported
+     |      
+     |      Marks the item as imported into a  item or updates the imported date
+     |      
+     |      **Params:**
+     |      @ItemId    : for   this is the  id
+     |      @ItemId    : for   this is the  id
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  datastore
+     |  
+     |  datastoreID
+     |  
+     |  Id
+     |  
+     |  System
+     |  
+     |  SystemID
+     |  
+     |  importedAt
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  j = hermes_datastore_imported
+     |  
+     |  
+     |  q = hermes_datastore_imported
+     |  
+     |  
+     |  sqlmeta = <class 'sqlobject.declarative.sqlmeta'>
+     |  
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __eq__(self, other)
+     |  
+     |  __ge__(self, other)
+     |  
+     |  __getstate__(self)
+     |  
+     |  __gt__(self, other)
+     |  
+     |  __init__(self, **kw)
+     |  
+     |  __le__(self, other)
+     |  
+     |  __lt__(self, other)
+     |  
+     |  __ne__(self, other)
+     |  
+     |  __repr__(self)
+     |  
+     |  __setstate__(self, d)
+     |  
+     |  __sqlrepr__(self, db)
+     |  
+     |  destroySelf(self)
+     |  
+     |  expire(self)
+     |  
+     |  set(self, _suppress_set_sig=False, **kw)
+     |  
+     |  sync(self)
+     |  
+     |  syncUpdate(self)
+     |  
+     |  tablesUsedImmediate(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  clearTable(cls, connection=None, clearJoinTables=True) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  coerceID(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexes(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTables(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTablesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTable(cls, ifNotExists=False, createJoinTables=True, createIndexes=True, applyConstraints=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTableSQL(cls, createJoinTables=True, createIndexes=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  delete(cls, id, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteMany(cls, where=<class sqlobject.sqlbuilder.NoDefault>, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropJoinTables(cls, ifExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropTable(cls, ifExists=False, dropJoinTables=True, cascade=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  get(cls, id, connection=None, selectResults=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  select(cls, clause=None, clauseTables=None, orderBy=<class sqlobject.sqlbuilder.NoDefault>, limit=None, lazyColumns=False, reversed=False, distinct=False, connection=None, join=None, forUpdate=False) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  selectBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  setConnection(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  sqlrepr(cls, value, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  tableExists(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __classinit__(cls, new_attrs)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from sqlobject.main.SQLObject:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from sqlobject.main.SQLObject:
+     |  
+     |  SelectResultsClass = <class 'sqlobject.sresults.SelectResults'>
+     |  
+     |  
+     |  __metaclass__ = <class 'sqlobject.declarative.DeclarativeMeta'>
+     |  
+     |  
+     |  childName = None
+    
+    class HermesLegend(sqlobject.main.SQLObject)
+     |  Hermes Legend
+     |  ==========================
+     |  
+     |  The Hermes Legend connects the  template to the hermes map
+     |  
+     |  :
+     |      Course Template
+     |  :
+     |      Approval Process
+     |  
+     |  +-------------------+                                 +----------------------+
+     |  |  HermesMap        |                                 |   Template     |
+     |  |-------------------|                                 |----------------------|
+     |  |                   |         +--------------+        |                      |
+     |  |                   | <----+  |  Legend      | <----+ |                      |
+     |  |                   | +---->  |              | +----> |                      |
+     |  |                   |         +--------------+        |                      |
+     |  +-------------------+                                 +----------------------+
+     |  
+     |  Method resolution order:
+     |      HermesLegend
+     |      sqlobject.main.SQLObject
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __repr__(self)
+     |  
+     |  addHermesMap lambda self, obj
+     |  
+     |  removeHermesMap lambda self, obj
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods defined here:
+     |  
+     |  deleteLegend(self, id=None) from sqlobject.declarative.DeclarativeMeta
+     |      Delete a Map Legend
+     |      
+     |      **Returns:**
+     |      Bool: True/False
+     |      
+     |      **Usage:**
+     |      Removes the connection of the External Map to the  item (Approval Process or Course Template for Catalog)
+     |  
+     |  getLegend(self, id=None, Id=None, mapId=None) from sqlobject.declarative.DeclarativeMeta
+     |      Retrieve a Legend
+     |      
+     |      **Params:**
+     |      - id    : required
+     |      
+     |      ** Optional Params if you don't have the legendId:**
+     |      - Id
+     |      - mapId
+     |      
+     |      **Returns:**
+     |      A Dict:
+     |      - legend_id : the legend id
+     |      - legend    : dict of the legend
+     |      - fullname    : fullname of the map
+     |  
+     |  getScopedLegends(self, Id=None, source=None, outdated=None, includeMaps=False) from sqlobject.declarative.DeclarativeMeta
+     |      Select the Legends
+     |      
+     |      **Optional Params: **
+     |          You may pass in the following parameters:
+     |          * Id    : int
+     |          * source    : external source short name or id
+     |          * outdated    : Boolean
+     |      
+     |      ** Returns: **
+     |      
+     |      { <EXT SOURCE SHORT NAME>: [{'current': bool,
+     |                                    '_id': int,
+     |                                    'id': <LEGEND ID>,
+     |                                    'name': <MAP NAME>,
+     |                                    'map_id': <MAP ID>,
+     |                                    'source_id': <EXT SOURCE ID>,
+     |                                    'source_name': <EXT SOURCE NAME>,
+     |                                    'version': <MAP VERSION>}]
+     |      
+     |      Example:
+     |      [{'banner': [{'current': False,
+     |                    '_id': 11,
+     |                    'id': 3,
+     |                    'name': 'Banner Monthly Test Outdated',
+     |                    'map_id': 4,
+     |                    'source_id': 3,
+     |                    'source_name': 'Banner',
+     |                    'version': '1349376110464'}]
+     |  
+     |  saveLegend(self, legendFields, mapId=None, Id=None, id=0) from sqlobject.declarative.DeclarativeMeta
+     |      Save legend, find map of mapId, then add the legend to the map
+     |      
+     |      - id        : required
+     |             OR
+     |      - Map id    : required
+     |      -  id : required
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  current
+     |  
+     |  details
+     |  
+     |  Id
+     |  
+     |  mapName
+     |      Retrieve the Legend's Map's Name.
+     |      
+     |      ** returns map name **
+     |  
+     |  mapVersion
+     |      Retrieve the Legend's Map's Version
+     |      
+     |      ** returns map version **
+     |  
+     |  maps
+     |  
+     |  modified
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  j = hermes_legend
+     |  
+     |  
+     |  q = hermes_legend
+     |  
+     |  
+     |  sqlmeta = <class 'sqlobject.declarative.sqlmeta'>
+     |  
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __eq__(self, other)
+     |  
+     |  __ge__(self, other)
+     |  
+     |  __getstate__(self)
+     |  
+     |  __gt__(self, other)
+     |  
+     |  __init__(self, **kw)
+     |  
+     |  __le__(self, other)
+     |  
+     |  __lt__(self, other)
+     |  
+     |  __ne__(self, other)
+     |  
+     |  __setstate__(self, d)
+     |  
+     |  __sqlrepr__(self, db)
+     |  
+     |  destroySelf(self)
+     |  
+     |  expire(self)
+     |  
+     |  set(self, _suppress_set_sig=False, **kw)
+     |  
+     |  sync(self)
+     |  
+     |  syncUpdate(self)
+     |  
+     |  tablesUsedImmediate(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  clearTable(cls, connection=None, clearJoinTables=True) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  coerceID(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexes(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTables(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTablesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTable(cls, ifNotExists=False, createJoinTables=True, createIndexes=True, applyConstraints=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTableSQL(cls, createJoinTables=True, createIndexes=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  delete(cls, id, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteMany(cls, where=<class sqlobject.sqlbuilder.NoDefault>, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropJoinTables(cls, ifExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropTable(cls, ifExists=False, dropJoinTables=True, cascade=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  get(cls, id, connection=None, selectResults=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  select(cls, clause=None, clauseTables=None, orderBy=<class sqlobject.sqlbuilder.NoDefault>, limit=None, lazyColumns=False, reversed=False, distinct=False, connection=None, join=None, forUpdate=False) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  selectBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  setConnection(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  sqlrepr(cls, value, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  tableExists(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __classinit__(cls, new_attrs)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from sqlobject.main.SQLObject:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from sqlobject.main.SQLObject:
+     |  
+     |  SelectResultsClass = <class 'sqlobject.sresults.SelectResults'>
+     |  
+     |  
+     |  __metaclass__ = <class 'sqlobject.declarative.DeclarativeMeta'>
+     |  
+     |  
+     |  childName = None
+    
+    class HermesMap(sqlobject.main.SQLObject)
+     |  Hermes Map
+     |  ==========================
+     |  
+     |  Each map has 1 external source, but may have multiple legends, and multiple dataStoreItems.
+     |  
+     |    +--------------+
+     |    |   Source     |                                           +----------------+
+     |    |--------------|                                           |    Legend      |
+     |    |              |                                           |----------------|
+     |    |              |     +-----------------+         +-------+ |                |
+     |    +--------------+     |    Map          |         | +-----> |                |
+     |         ^ +             |-----------------|         | |       +----------------+
+     |         | |             |                 | <-------+ |
+     |         | +---------->  |                 | +---------+
+     |         +------------+  |                 | <-------+ |       +----------------+
+     |                         +-----------------+         | |       |   Legend       |
+     |                               ^ +                   | |       |----------------|
+     |                               | |                   | +-----> |                |
+     |                               | |                   +-------+ |                |
+     |                               | |                             +----------------+
+     |                               | |
+     |                               | |        +--------------------+
+     |                               | |        |     DataStore      |
+     |                               | |        |--------------------|
+     |                               | |        |                    |
+     |                               | +------> |                    |
+     |                               +--------+ |                    |
+     |                                          +--------------------+
+     |  
+     |  Method resolution order:
+     |      HermesMap
+     |      sqlobject.main.SQLObject
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __repr__(self)
+     |  
+     |  addHermesLegend lambda self, obj
+     |  
+     |  removeHermesLegend lambda self, obj
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods defined here:
+     |  
+     |  deleteMap(self, id=None, allVersions=False) from sqlobject.declarative.DeclarativeMeta
+     |      When you delete a map, it will delete all children legends first
+     |  
+     |  getExternalMaps(self, active=True, shortName=None) from sqlobject.declarative.DeclarativeMeta
+     |      Get a list of external maps, ordered by external source
+     |      
+     |      **Params**
+     |      - active    :    bool
+     |      - shortName        :    short name to only grab maps from that source
+     |      
+     |      ** Returns: **
+     |          {'1': {'id': 1,
+     |                 'name': 'Banner Log Map',
+     |                 'source_id': 3,
+     |                 'version': '1349708776925'},
+     |  
+     |  getMap(self, id=None) from sqlobject.declarative.DeclarativeMeta
+     |      Get a Specific Map Details, including the count of how many legends are pointing to that map (without timestamp)
+     |      
+     |      if mapVersion is passed it grabs that version, otherwise it grabs the latest
+     |      
+     |      **Return a dict:**
+     |          * id            : id of map
+     |          * name          : name 
+     |          * version       : timestamp
+     |          * legend        : map's legend
+     |          * map           : map's fileMap
+     |          * external_type : id of external type
+     |          * action        : map's action - currently only 'modify'
+     |          * has_legends   : count of the legends referencing this map name
+     |  
+     |  saveMap(self, source, name, sourceFieldNames, sourceDefinitions, action='modify', status='active') from sqlobject.declarative.DeclarativeMeta
+     |      Save a Hermes Map
+     |      
+     |      If a map of same name already exists, it will copy the legends of that map and mark them as current = False
+     |      
+     |      You may pass in the source shortName or the source id when you save a map.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  dataStoreItems
+     |  
+     |  details
+     |  
+     |  externalType
+     |  
+     |  externalTypeID
+     |  
+     |  importLegend
+     |  
+     |  importLegendSQL
+     |  
+     |  modified
+     |  
+     |  name
+     |  
+     |  status
+     |  
+     |  version
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  j = hermes_map
+     |  
+     |  
+     |  q = hermes_map
+     |  
+     |  
+     |  sqlmeta = <class 'sqlobject.declarative.sqlmeta'>
+     |  
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __eq__(self, other)
+     |  
+     |  __ge__(self, other)
+     |  
+     |  __getstate__(self)
+     |  
+     |  __gt__(self, other)
+     |  
+     |  __init__(self, **kw)
+     |  
+     |  __le__(self, other)
+     |  
+     |  __lt__(self, other)
+     |  
+     |  __ne__(self, other)
+     |  
+     |  __setstate__(self, d)
+     |  
+     |  __sqlrepr__(self, db)
+     |  
+     |  destroySelf(self)
+     |  
+     |  expire(self)
+     |  
+     |  set(self, _suppress_set_sig=False, **kw)
+     |  
+     |  sync(self)
+     |  
+     |  syncUpdate(self)
+     |  
+     |  tablesUsedImmediate(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  clearTable(cls, connection=None, clearJoinTables=True) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  coerceID(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexes(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTables(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTablesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTable(cls, ifNotExists=False, createJoinTables=True, createIndexes=True, applyConstraints=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTableSQL(cls, createJoinTables=True, createIndexes=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  delete(cls, id, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteMany(cls, where=<class sqlobject.sqlbuilder.NoDefault>, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropJoinTables(cls, ifExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropTable(cls, ifExists=False, dropJoinTables=True, cascade=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  get(cls, id, connection=None, selectResults=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  select(cls, clause=None, clauseTables=None, orderBy=<class sqlobject.sqlbuilder.NoDefault>, limit=None, lazyColumns=False, reversed=False, distinct=False, connection=None, join=None, forUpdate=False) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  selectBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  setConnection(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  sqlrepr(cls, value, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  tableExists(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __classinit__(cls, new_attrs)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from sqlobject.main.SQLObject:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from sqlobject.main.SQLObject:
+     |  
+     |  SelectResultsClass = <class 'sqlobject.sresults.SelectResults'>
+     |  
+     |  
+     |  __metaclass__ = <class 'sqlobject.declarative.DeclarativeMeta'>
+     |  
+     |  
+     |  childName = None
+    
+    class HermesSystems(sqlobject.main.SQLObject)
+     |  Hermes External Sources
+     |  ==========================
+     |  
+     |  - 
+     |  - Active Directory
+     |  - Banner
+     |  - 
+     |  - Datatel
+     |  - Degree Audit
+     |  - Degree Works
+     |  - PeopleSoft
+     |  
+     |  Method resolution order:
+     |      HermesSources
+     |      sqlobject.main.SQLObject
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __repr__(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods defined here:
+     |  
+     |  addDefaultSources(self) from sqlobject.declarative.DeclarativeMeta
+     |      Will add the following records to the table:
+     |      
+     |      +----+-----------------+------------------+------+---------------------+----------+
+     |      | id | short_name      | name             | meta | modified            | status   |
+     |      +----+-----------------+------------------+------+---------------------+----------+
+     |      |  1 |           |        | NULL | 2012-10-08 11:06:16 | inactive |
+     |      |  2 |       |        | NULL | 2012-10-08 11:06:16 | inactive |
+     |      |  3 | banner          | Banner           | NULL | 2012-10-08 11:06:16 | inactive |
+     |      |  4 | datatel         | Datatel          | NULL | 2012-10-08 11:06:16 | inactive |
+     |      |  5 | degreeAudit     | Degree Audit     | NULL | 2012-10-08 11:06:16 | inactive |
+     |      |  6 | degreeWorks     | Degree Works     | NULL | 2012-10-08 11:06:16 | inactive |
+     |      |  7 | peopleSoft      | PeopleSoft       | NULL | 2012-10-08 11:06:16 | inactive |
+     |      |  8 | activeDirectory | Active Directory | NULL | 2012-10-08 11:06:16 | inactive |
+     |      +----+-----------------+------------------+------+---------------------+----------+
+     |  
+     |  addNewSource(self, sourceDict={}) from sqlobject.declarative.DeclarativeMeta
+     |      Will add new source to available external sources.
+     |      
+     |      The dict must contain the shortName and name keys
+     |  
+     |  deleteExternalSource(self, id=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  getExternalSources(self, active=True, returnMeta=False) from sqlobject.declarative.DeclarativeMeta
+     |      Return a dict of external sources
+     |      
+     |      if active is false, return the status of each external source
+     |      
+     |      if returnMeta = True : return the meta in the dictionary of sources
+     |  
+     |  listSourceItemDetails(self, id=None, client=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  listSourceItems(self, client=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  saveExternalSource(self, source) from sqlobject.declarative.DeclarativeMeta
+     |      Save / Update an external source
+     |      
+     |      **Params:**
+     |      Dictionary of key/value for external source settings.
+     |      
+     |      **You must pass in the shortName**
+     |      
+     |      'status'    : default 'inactive', may pass 'active'
+     |  
+     |  saveExternalSourceSettings(self, settings=None) from sqlobject.declarative.DeclarativeMeta
+     |      Pass a dict with keys as the short names and the values as a dict of settings
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  childrenMaps
+     |  
+     |  client
+     |  
+     |  meta
+     |  
+     |  modified
+     |  
+     |  name
+     |  
+     |  shortName
+     |  
+     |  status
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  j = hermes_sources
+     |  
+     |  
+     |  q = hermes_sources
+     |  
+     |  
+     |  sqlmeta = <class 'sqlobject.declarative.sqlmeta'>
+     |  
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __eq__(self, other)
+     |  
+     |  __ge__(self, other)
+     |  
+     |  __getstate__(self)
+     |  
+     |  __gt__(self, other)
+     |  
+     |  __init__(self, **kw)
+     |  
+     |  __le__(self, other)
+     |  
+     |  __lt__(self, other)
+     |  
+     |  __ne__(self, other)
+     |  
+     |  __setstate__(self, d)
+     |  
+     |  __sqlrepr__(self, db)
+     |  
+     |  destroySelf(self)
+     |  
+     |  expire(self)
+     |  
+     |  set(self, _suppress_set_sig=False, **kw)
+     |  
+     |  sync(self)
+     |  
+     |  syncUpdate(self)
+     |  
+     |  tablesUsedImmediate(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  clearTable(cls, connection=None, clearJoinTables=True) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  coerceID(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexes(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTables(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTablesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTable(cls, ifNotExists=False, createJoinTables=True, createIndexes=True, applyConstraints=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTableSQL(cls, createJoinTables=True, createIndexes=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  delete(cls, id, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteMany(cls, where=<class sqlobject.sqlbuilder.NoDefault>, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropJoinTables(cls, ifExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropTable(cls, ifExists=False, dropJoinTables=True, cascade=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  get(cls, id, connection=None, selectResults=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  select(cls, clause=None, clauseTables=None, orderBy=<class sqlobject.sqlbuilder.NoDefault>, limit=None, lazyColumns=False, reversed=False, distinct=False, connection=None, join=None, forUpdate=False) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  selectBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  setConnection(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  sqlrepr(cls, value, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  tableExists(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __classinit__(cls, new_attrs)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from sqlobject.main.SQLObject:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from sqlobject.main.SQLObject:
+     |  
+     |  SelectResultsClass = <class 'sqlobject.sresults.SelectResults'>
+     |  
+     |  
+     |  __metaclass__ = <class 'sqlobject.declarative.DeclarativeMeta'>
+     |  
+     |  
+     |  childName = None
+    
+    class StoreAttributes(sqlobject.main.SQLObject)
+     |  Store Attributes
+     |  
+     |  Contains the attributes of the Datastore Item
+     |  
+     |  Method resolution order:
+     |      StoreAttributes
+     |      sqlobject.main.SQLObject
+     |      __builtin__.object
+     |  
+     |  Class methods defined here:
+     |  
+     |  addAttributes(self, datastoreId, attributes, *type) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  getAPName(self, datastoreId) from sqlobject.declarative.DeclarativeMeta
+     |      Get the Approval Process Name from the Attributes of a datastore item
+     |  
+     |  getAttributes(self, datastoreId) from sqlobject.declarative.DeclarativeMeta
+     |      retrieve a dict of the attributes of a datastore item, excluding the approval process name
+     |  
+     |  getColumnNames(self, datastoreIds) from sqlobject.declarative.DeclarativeMeta
+     |      Get the column names that will be used in the  datastore export, excluding the approval process name
+     |  
+     |  getSystemId(self, datastoreId) from sqlobject.declarative.DeclarativeMeta
+     |      Gets the id of the datastore item from the original source
+     |      
+     |      ** Parameters **
+     |      @datastoreId
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  createdAt
+     |  
+     |  dataType
+     |  
+     |  datastore
+     |  
+     |  datastoreID
+     |  
+     |  deletedAt
+     |  
+     |  fieldName
+     |  
+     |  fieldValue
+     |  
+     |  modifiedAt
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  j = hermes_datastore_attributes
+     |  
+     |  
+     |  q = hermes_datastore_attributes
+     |  
+     |  
+     |  sqlmeta = <class 'sqlobject.declarative.sqlmeta'>
+     |  
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __eq__(self, other)
+     |  
+     |  __ge__(self, other)
+     |  
+     |  __getstate__(self)
+     |  
+     |  __gt__(self, other)
+     |  
+     |  __init__(self, **kw)
+     |  
+     |  __le__(self, other)
+     |  
+     |  __lt__(self, other)
+     |  
+     |  __ne__(self, other)
+     |  
+     |  __repr__(self)
+     |  
+     |  __setstate__(self, d)
+     |  
+     |  __sqlrepr__(self, db)
+     |  
+     |  destroySelf(self)
+     |  
+     |  expire(self)
+     |  
+     |  set(self, _suppress_set_sig=False, **kw)
+     |  
+     |  sync(self)
+     |  
+     |  syncUpdate(self)
+     |  
+     |  tablesUsedImmediate(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  clearTable(cls, connection=None, clearJoinTables=True) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  coerceID(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexes(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTables(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTablesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTable(cls, ifNotExists=False, createJoinTables=True, createIndexes=True, applyConstraints=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTableSQL(cls, createJoinTables=True, createIndexes=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  delete(cls, id, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteMany(cls, where=<class sqlobject.sqlbuilder.NoDefault>, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropJoinTables(cls, ifExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropTable(cls, ifExists=False, dropJoinTables=True, cascade=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  get(cls, id, connection=None, selectResults=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  select(cls, clause=None, clauseTables=None, orderBy=<class sqlobject.sqlbuilder.NoDefault>, limit=None, lazyColumns=False, reversed=False, distinct=False, connection=None, join=None, forUpdate=False) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  selectBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  setConnection(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  sqlrepr(cls, value, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  tableExists(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __classinit__(cls, new_attrs)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from sqlobject.main.SQLObject:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from sqlobject.main.SQLObject:
+     |  
+     |  SelectResultsClass = <class 'sqlobject.sresults.SelectResults'>
+     |  
+     |  
+     |  __metaclass__ = <class 'sqlobject.declarative.DeclarativeMeta'>
+     |  
+     |  
+     |  childName = None
+
+FUNCTIONS
+    sortMultipleKeys(items, columns)
+        This code is used to sort a list by multiple keys in the sub dicts
+
+DATA
+    DATETIME_IMPLEMENTATION = 'datetime'
+    client_conn = 'mysql://backup:tepeyollotl@10.253.209.204'
+    conf = {'api_listen_ip': '0.0.0.0', 'api_port': '80', 'hermes_read_dat...
+    const = <sqlobject.sqlbuilder.ConstantSpace instance>
+    datetime_available = True
+    default_datetime_implementation = 'datetime'
+    func = <sqlobject.sqlbuilder.ConstantSpace instance>
+    mxdatetime_available = False
+    sqlhub = <sqlobject.dbconnection.ConnectionHub object>
+    version = '1.3.1'
+    version_info = (1, 3, 1, 'final', 0)
+
+

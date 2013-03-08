@@ -1,0 +1,43 @@
+Help on package engines:
+
+NAME
+    engines
+
+FILE
+    d:\dev\hermes-digarc\engines\__init__.py
+
+PACKAGE CONTENTS
+    HermesModels
+    cron
+    databases
+    jobs
+
+FUNCTIONS
+    gmtime(...)
+        gmtime([seconds]) -> (tm_year, tm_mon, tm_mday, tm_hour, tm_min,
+                               tm_sec, tm_wday, tm_yday, tm_isdst)
+        
+        Convert seconds since the Epoch to a time tuple expressing UTC (a.k.a.
+        GMT).  When 'seconds' is not passed in, convert the current time instead.
+    
+    strftime(...)
+        strftime(format[, tuple]) -> string
+        
+        Convert a time tuple to a string according to a format specification.
+        See the library reference manual for formatting codes. When the time tuple
+        is not present, current time as returned by localtime() is used.
+
+DATA
+    DATETIME_IMPLEMENTATION = 'datetime'
+    client_conn = 'mysql://backup:tepeyollotl@10.253.209.204'
+    conf = {'api_listen_ip': '0.0.0.0', 'api_port': '80', 'hermes_read_dat...
+    const = <sqlobject.sqlbuilder.ConstantSpace instance>
+    datetime_available = True
+    default_datetime_implementation = 'datetime'
+    func = <sqlobject.sqlbuilder.ConstantSpace instance>
+    mxdatetime_available = False
+    sqlhub = <sqlobject.dbconnection.ConnectionHub object>
+    version = '1.3.1'
+    version_info = (1, 3, 1, 'final', 0)
+
+

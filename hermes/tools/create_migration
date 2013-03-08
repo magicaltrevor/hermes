@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "Please make sure that your code is up to date before making the snapshot. When you are ready hit enter, you will be taken into an editor, enter the SQL for your migration and then save it (:wq). Then run upgrade-schema"
+read ready
+OLDEDITOR=$EDITOR
+export EDITOR=vi
+OLDPP=$PYTHONPATH
+export PYTHONPATH=./
+sqlobject-admin record --egg=hermes -c mysql://hermes:applebeesbetterbiscuitmakerthreethousand@10.0.1.131/hermes_master --no-db-record --edit
+export PYTHONPATH=$OLDPP
+export EDITOR=$OLDEDITOR
+echo "Done!"
+

@@ -1,0 +1,69 @@
+[server]
+# Listen to ip range
+# setting to 0.0.0.0 will allow connections from all IPs
+# if you want specify an IP for security reasons you can here
+# Or you can specify a subnet (ie 192.168.18.0)
+api_listen_ip=0.0.0.0
+
+# port number to listen for api calls
+api_port=80
+
+# server address
+# used to make http calls
+server_address=
+
+# server debug mode
+# this enables/disable debug mode on incoming server requests like 
+server_debug=True
+
+[security]
+# security mode api_key / master_key
+# if set to api_key it will default to a client/api_key structure, the master_key is used for complete access as well as adding api keys
+# if set to master_key it's master_key only
+security_mode=master_key
+
+# security password
+# This is the master_password
+security_passwd=shakv99s
+
+[database]
+# hermes read server
+# this is the hermes read server
+hermes_read_database_type=mysql
+hermes_read_database_host=10.0.1.131
+hermes_read_database_user=readonlyuser
+hermes_read_database_passwd=readonlypasswd
+hermes_read_database_db=hermes_master
+
+[taskman]
+broker=amqp://hermes:ampqpass@ampqnode:5672/dbm01
+backend=amqp://hermes:ampqpass@ampqnode:5672/dbm01
+modules=hermes.engines.Cron
+
+# hermes write server
+# this is the hermes write server connection info
+hermes_write_database_type=mysql
+hermes_write_database_host=10.0.1.131
+hermes_write_database_user=hermes
+hermes_write_database_passwd=writedbpassword
+hermes_write_database_db=hermes_master
+
+[logging]
+logdir=/var/log/hermes/
+logfile=hermes.log
+# To set the loglevel use the following integers for what you want the loglevel to be.
+# 0 NOTSET
+# 10 DEBUG
+# 20 INFO
+# 30 WARNING
+# 40 ERROR
+# 50 FATAL
+loglevel=10
+# Enter the amount in bytes for the maximum size of the log before it is rotated. Below is defaulted to 1GB
+maxlogsize=1073741824
+
+[plugins]
+plugin_prefix = plugins
+
+[customization]
+#custom options go here for plugins

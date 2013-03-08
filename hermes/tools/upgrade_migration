@@ -1,0 +1,5 @@
+#!/bin/bash
+OLDPP=$PYTHONPATH
+export PYTHONPATH=./
+sqlobject-admin upgrade --egg=hermes -c mysql://hermes:applebeesbetterbiscuitmakerthreethousand@10.0.1.131/hermes_master
+export PYTHONPATH=$OLDPP

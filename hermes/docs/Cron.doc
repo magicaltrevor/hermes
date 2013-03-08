@@ -1,0 +1,394 @@
+Help on module engines.cron in engines:
+
+NAME
+    engines.cron
+
+FILE
+    d:\dev\hermes-digarc\engines\cron.py
+
+CLASSES
+    __builtin__.object
+        Cron
+    __builtin__.set(__builtin__.object)
+        AllMatch
+    sqlobject.main.SQLObject(__builtin__.object)
+        Event
+    
+    class AllMatch(__builtin__.set)
+     |  Universal set - match everything
+     |  
+     |  Method resolution order:
+     |      AllMatch
+     |      __builtin__.set
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __contains__(self, item)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from __builtin__.set:
+     |  
+     |  __and__(...)
+     |      x.__and__(y) <==> x&y
+     |  
+     |  __cmp__(...)
+     |      x.__cmp__(y) <==> cmp(x,y)
+     |  
+     |  __eq__(...)
+     |      x.__eq__(y) <==> x==y
+     |  
+     |  __ge__(...)
+     |      x.__ge__(y) <==> x>=y
+     |  
+     |  __getattribute__(...)
+     |      x.__getattribute__('name') <==> x.name
+     |  
+     |  __gt__(...)
+     |      x.__gt__(y) <==> x>y
+     |  
+     |  __iand__(...)
+     |      x.__iand__(y) <==> x&=y
+     |  
+     |  __init__(...)
+     |      x.__init__(...) initializes x; see help(type(x)) for signature
+     |  
+     |  __ior__(...)
+     |      x.__ior__(y) <==> x|=y
+     |  
+     |  __isub__(...)
+     |      x.__isub__(y) <==> x-=y
+     |  
+     |  __iter__(...)
+     |      x.__iter__() <==> iter(x)
+     |  
+     |  __ixor__(...)
+     |      x.__ixor__(y) <==> x^=y
+     |  
+     |  __le__(...)
+     |      x.__le__(y) <==> x<=y
+     |  
+     |  __len__(...)
+     |      x.__len__() <==> len(x)
+     |  
+     |  __lt__(...)
+     |      x.__lt__(y) <==> x<y
+     |  
+     |  __ne__(...)
+     |      x.__ne__(y) <==> x!=y
+     |  
+     |  __or__(...)
+     |      x.__or__(y) <==> x|y
+     |  
+     |  __rand__(...)
+     |      x.__rand__(y) <==> y&x
+     |  
+     |  __reduce__(...)
+     |      Return state information for pickling.
+     |  
+     |  __repr__(...)
+     |      x.__repr__() <==> repr(x)
+     |  
+     |  __ror__(...)
+     |      x.__ror__(y) <==> y|x
+     |  
+     |  __rsub__(...)
+     |      x.__rsub__(y) <==> y-x
+     |  
+     |  __rxor__(...)
+     |      x.__rxor__(y) <==> y^x
+     |  
+     |  __sizeof__(...)
+     |      S.__sizeof__() -> size of S in memory, in bytes
+     |  
+     |  __sub__(...)
+     |      x.__sub__(y) <==> x-y
+     |  
+     |  __xor__(...)
+     |      x.__xor__(y) <==> x^y
+     |  
+     |  add(...)
+     |      Add an element to a set.
+     |      
+     |      This has no effect if the element is already present.
+     |  
+     |  clear(...)
+     |      Remove all elements from this set.
+     |  
+     |  copy(...)
+     |      Return a shallow copy of a set.
+     |  
+     |  difference(...)
+     |      Return the difference of two or more sets as a new set.
+     |      
+     |      (i.e. all elements that are in this set but not the others.)
+     |  
+     |  difference_update(...)
+     |      Remove all elements of another set from this set.
+     |  
+     |  discard(...)
+     |      Remove an element from a set if it is a member.
+     |      
+     |      If the element is not a member, do nothing.
+     |  
+     |  intersection(...)
+     |      Return the intersection of two or more sets as a new set.
+     |      
+     |      (i.e. elements that are common to all of the sets.)
+     |  
+     |  intersection_update(...)
+     |      Update a set with the intersection of itself and another.
+     |  
+     |  isdisjoint(...)
+     |      Return True if two sets have a null intersection.
+     |  
+     |  issubset(...)
+     |      Report whether another set contains this set.
+     |  
+     |  issuperset(...)
+     |      Report whether this set contains another set.
+     |  
+     |  pop(...)
+     |      Remove and return an arbitrary set element.
+     |      Raises KeyError if the set is empty.
+     |  
+     |  remove(...)
+     |      Remove an element from a set; it must be a member.
+     |      
+     |      If the element is not a member, raise a KeyError.
+     |  
+     |  symmetric_difference(...)
+     |      Return the symmetric difference of two sets as a new set.
+     |      
+     |      (i.e. all elements that are in exactly one of the sets.)
+     |  
+     |  symmetric_difference_update(...)
+     |      Update a set with the symmetric difference of itself and another.
+     |  
+     |  union(...)
+     |      Return the union of sets as a new set.
+     |      
+     |      (i.e. all elements that are in either set.)
+     |  
+     |  update(...)
+     |      Update a set with the union of itself and others.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from __builtin__.set:
+     |  
+     |  __hash__ = None
+     |  
+     |  __new__ = <built-in method __new__ of type object>
+     |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+    
+    class Cron(__builtin__.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self, events)
+     |  
+     |  run(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class Event(sqlobject.main.SQLObject)
+     |  Method resolution order:
+     |      Event
+     |      sqlobject.main.SQLObject
+     |      __builtin__.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __str__(self)
+     |  
+     |  check(self, t)
+     |  
+     |  matchtime(self, t)
+     |      Return True if this event should trigger at the specified datetime
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods defined here:
+     |  
+     |  add_new_event(self, mins, hours, days, months, client, module, method, params) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  convert_to_set(self, obj) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  action
+     |  
+     |  all_match
+     |  
+     |  client
+     |  
+     |  days
+     |  
+     |  hours
+     |  
+     |  mins
+     |  
+     |  months
+     |  
+     |  params
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  j = events
+     |  
+     |  
+     |  q = events
+     |  
+     |  
+     |  sqlmeta = <class 'sqlobject.declarative.sqlmeta'>
+     |  
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __eq__(self, other)
+     |  
+     |  __ge__(self, other)
+     |  
+     |  __getstate__(self)
+     |  
+     |  __gt__(self, other)
+     |  
+     |  __init__(self, **kw)
+     |  
+     |  __le__(self, other)
+     |  
+     |  __lt__(self, other)
+     |  
+     |  __ne__(self, other)
+     |  
+     |  __repr__(self)
+     |  
+     |  __setstate__(self, d)
+     |  
+     |  __sqlrepr__(self, db)
+     |  
+     |  destroySelf(self)
+     |  
+     |  expire(self)
+     |  
+     |  set(self, _suppress_set_sig=False, **kw)
+     |  
+     |  sync(self)
+     |  
+     |  syncUpdate(self)
+     |  
+     |  tablesUsedImmediate(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  clearTable(cls, connection=None, clearJoinTables=True) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  coerceID(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexes(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createIndexesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTables(cls, ifNotExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createJoinTablesSQL(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTable(cls, ifNotExists=False, createJoinTables=True, createIndexes=True, applyConstraints=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  createTableSQL(cls, createJoinTables=True, createIndexes=True, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  delete(cls, id, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  deleteMany(cls, where=<class sqlobject.sqlbuilder.NoDefault>, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropJoinTables(cls, ifExists=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  dropTable(cls, ifExists=False, dropJoinTables=True, cascade=False, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  get(cls, id, connection=None, selectResults=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  select(cls, clause=None, clauseTables=None, orderBy=<class sqlobject.sqlbuilder.NoDefault>, limit=None, lazyColumns=False, reversed=False, distinct=False, connection=None, join=None, forUpdate=False) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  selectBy(cls, connection=None, **kw) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  setConnection(cls, value) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  sqlrepr(cls, value, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  tableExists(cls, connection=None) from sqlobject.declarative.DeclarativeMeta
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from sqlobject.main.SQLObject:
+     |  
+     |  __classinit__(cls, new_attrs)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from sqlobject.main.SQLObject:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from sqlobject.main.SQLObject:
+     |  
+     |  SelectResultsClass = <class 'sqlobject.sresults.SelectResults'>
+     |  
+     |  
+     |  __metaclass__ = <class 'sqlobject.declarative.DeclarativeMeta'>
+     |  
+     |  
+     |  childName = None
+
+FUNCTIONS
+    gmtime(...)
+        gmtime([seconds]) -> (tm_year, tm_mon, tm_mday, tm_hour, tm_min,
+                               tm_sec, tm_wday, tm_yday, tm_isdst)
+        
+        Convert seconds since the Epoch to a time tuple expressing UTC (a.k.a.
+        GMT).  When 'seconds' is not passed in, convert the current time instead.
+    
+    main()
+    
+    strftime(...)
+        strftime(format[, tuple]) -> string
+        
+        Convert a time tuple to a string according to a format specification.
+        See the library reference manual for formatting codes. When the time tuple
+        is not present, current time as returned by localtime() is used.
+
+DATA
+    DATETIME_IMPLEMENTATION = 'datetime'
+    client_conn = 'mysql://backup:tepeyollotl@10.253.209.204'
+    conf = {'api_listen_ip': '0.0.0.0', 'api_port': '80', 'hermes_read_dat...
+    const = <sqlobject.sqlbuilder.ConstantSpace instance>
+    datetime_available = True
+    default_datetime_implementation = 'datetime'
+    func = <sqlobject.sqlbuilder.ConstantSpace instance>
+    mxdatetime_available = False
+    sqlhub = <sqlobject.dbconnection.ConnectionHub object>
+    version = '1.3.1'
+    version_info = (1, 3, 1, 'final', 0)
+
+New change!
+
+

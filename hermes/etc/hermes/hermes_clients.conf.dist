@@ -1,0 +1,13 @@
+[system1_hermes]
+dbname = system1_hermes
+system1ApiKey = c93209890djiodjeio29083 #api key for system1's api
+system1ApiURL = http://api.system1.example.com
+plugin_file = testplugin
+plugin = TestPlugin
+
+[system2_hermes]
+dbname = system2_hermes
+system2ApiKey = c91dffd3i903i9d0i3903jkdi3jd
+acalogApiURL = http://api.system2.example.com
+plugin_file = system2test
+plugin = TestPluginSystemTwo
