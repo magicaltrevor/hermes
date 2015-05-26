@@ -1,7 +1,6 @@
-hermes-digarc
+hermes
 =============
 
-version of hermes for digarc
 
 ##Rough API Documentation:
 
