@@ -6,7 +6,7 @@ conf = Util.load_conf()
 class HermesWebServices(HermesServices):
     
     def __init__(self, client, plugin=None, pluginFile=None, methodParams=None):
-        DigarcServices.__init__(self, client, plugin, pluginFile, methodParams)
+        HermesServices.__init__(self, client, plugin, pluginFile, methodParams)
         #logging.info("init client: %s" % client)
         self.initClient(client)
         self.client = client

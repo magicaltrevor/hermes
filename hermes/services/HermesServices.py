@@ -9,7 +9,7 @@ class HermesServices():
     
     def __init__(self, client, plugin=None, pluginFile=None, methodParams={}):
         if plugin:
-            print "Initializing digarc services with %s plugin" % plugin
+            print "Initializing hermes services with %s plugin" % plugin
             
             client_conf = Util.load_client_conf(client=client)
             

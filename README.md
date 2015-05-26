@@ -37,7 +37,7 @@ http://localhost:8008/api/client/map/saveMap/{"externalTypeId":3, "mapName":"Api
 
 
 ##Hermes Maps
-Maps external data sources to fields in digarc systems (tells hermes how to store data in the data store)
+Maps external data sources to fields in internal systems (tells hermes how to store data in the data store)
 ex: Banner Monthly Update
 
 ###Properties 
@@ -68,7 +68,7 @@ Used by maps as referencial information to map external data sources to fields i
 - A property has many Hermes Map references
 - A hermes map (can) belongs to many objects
 - A hermes legend has and belongs to a hermes map
-- A hermes legend belongs to a digarc object through a hermes legend id
+- A hermes legend belongs to an internal object through a hermes legend id
 - A hermes data source has many maps
 - A hermes map has and belongs to a hermes data source
 - Cron (which is not a recorded object) has many Events
@@ -79,7 +79,7 @@ Used by maps as referencial information to map external data sources to fields i
 
 _See below for Testing_
 
-![Hermes Stack Diagram](https://github.com/digarc/hermes-digarc/raw/master/hermes-stack.png)
+![Hermes Stack Diagram](https://github.com/magicaltrevor/hermes/raw/master/hermes-stack.png)
 
 ---
 

@@ -9,7 +9,7 @@ class HermesCronServices(HermesServices):
     
     def __init__(self, client, plugin=None, pluginFile=None, event=None):
         if plugin:
-            print "Initializing digarc services with %s plugin" % plugin
+            print "Initializing hermes services with %s plugin" % plugin
             
             client_conf = Util.load_client_conf(client=client)
             
@@ -33,7 +33,7 @@ class HermesCronServices(HermesServices):
         self.imported = DataStoreImported
         self.event = Event
         
-        print "FinishedInitializing digarc services"
+        print "FinishedInitializing hermes services"
 
 
     def initClient(self, client, map, legend, params=None, debug='True'):

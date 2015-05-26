@@ -142,7 +142,7 @@
   </head>
   <body>
     <p>
-      Will mark that the datastore item was imported into digarc source and the digarc id
+      Will mark that the datastore item was imported into internal source and the internal id
     </p>
   </body>
 </html></richcontent>
