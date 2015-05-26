@@ -3,7 +3,7 @@ import hermes.lib.util as Util
 import simplejson
 conf = Util.load_conf()
 
-class HermesWebServices(DigarcServices):
+class HermesWebServices(HermesServices):
     
     def __init__(self, client, plugin=None, pluginFile=None, methodParams=None):
         DigarcServices.__init__(self, client, plugin, pluginFile, methodParams)
