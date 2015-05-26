@@ -4,8 +4,8 @@ NAME
     engines
 
 FILE
-    d:\dev\hermes-digarc\engines\__init__.py
-
+    d:\dev\hermes\engines\
+    
 PACKAGE CONTENTS
     HermesModels
     cron
